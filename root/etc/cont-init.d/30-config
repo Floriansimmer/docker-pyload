@@ -1,0 +1,30 @@
+#!/usr/bin/with-contenv bash
+
+# create folders
+mkdir -p \
+	/var/log/pyload
+	
+# CHECK CONFIG AND LOAD DEFAULTS
+if [ ! -f /config/pyload.conf ]
+then
+    echo "No Config found. Using Copy of default config."
+    cp -r /defaults/* /config/
+fi	
+
+# INSTALL THEME
+if [ ! -d /app/pyload/Nexttheme ]
+then
+	echo "Installing Next THEME"
+	git clone https://github.com/OzzieIsaacs/pyload-NextTheme /app/pyload/Nexttheme && \
+	cp -avr /app/pyload/Nexttheme/media/* /app/pyload/module/web/media/ && \
+	cp -avr /app/pyload/Nexttheme/templates/* /app/pyload/module/web/templates/ && \
+	sed -Ei 's/loader = PrefixLoader[(][{]/loader = PrefixLoader({ "Next": FileSystemLoader(join(PROJECT_DIR, "templates", "Next")),/' /app/pyload/module/web/webinterface.py
+fi
+
+# permissions
+chown -R abc:abc \
+	/app/pyload \
+	/config
+
+chmod 777 \
+	/var/log/pyload
