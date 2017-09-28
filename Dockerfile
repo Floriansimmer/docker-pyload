@@ -7,7 +7,6 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 
 # set python to use utf-8 rather than ascii.
 ENV PYTHONIOENCODING="UTF-8"
-ENV NEXTTHEME="FALSE"
 
 # install runtime packages
 RUN apk add --no-cache \
