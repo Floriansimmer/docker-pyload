@@ -24,4 +24,4 @@ COPY root/ /
 # ports and volumes
 EXPOSE 8000 7227 9666
 WORKDIR /app/pyload
-VOLUME /config /downloads /archive
+VOLUME /config /downloads
