@@ -39,8 +39,11 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 ```
 
 ## Notes
+Default Login is
 
-* The docker entrypoint will upgrade operating system at each startup.
+    pyload
+    pyload
+	  
 * The port 8000 is used for webui
 * The port 7227 is used for the api
 * The port 9666 is used for click n load plugin
